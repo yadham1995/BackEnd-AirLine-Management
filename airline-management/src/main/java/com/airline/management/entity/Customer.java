@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+@Table(name="Customer")
 @Entity
 @Getter
 @Setter
@@ -13,10 +14,10 @@ import lombok.ToString;
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     @Column(name = "customer_code", nullable = false, unique = true)
-    private Integer customerCode;
+    private String customerCode;
 
     private String name;
 }

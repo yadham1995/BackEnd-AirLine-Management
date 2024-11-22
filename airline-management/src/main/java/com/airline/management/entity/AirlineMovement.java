@@ -1,8 +1,10 @@
 package com.airline.management.entity;
 
 
+import com.airline.management.dto.GDS;
+import com.airline.management.dto.PayForm;
+import com.airline.management.dto.TicketForm;
 import jakarta.persistence.*;
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -10,6 +12,7 @@ import lombok.ToString;
 import java.math.BigDecimal;
 import java.util.Date;
 
+@Table(name="AirlineMovement")
 @Entity
 @Getter
 @Setter
@@ -17,11 +20,7 @@ import java.util.Date;
 public class AirlineMovement {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+    private Long id;
 
     @Column(name = "serial_number", nullable = false, unique = true)
     private Integer serialNumber;
@@ -32,19 +31,11 @@ public class AirlineMovement {
     @Column(name = "issue_date")
     private Date issueDate;
 
-    @ManyToOne
-    @JoinColumn(name = "carrier_code_id")
-    private CarrierCode carrierCode;
-
     @Enumerated(EnumType.STRING)
     private TicketForm ticketForm;
 
     @Column(name = "passenger_name")
     private String passengerName;
-
-    @ManyToOne
-    @JoinColumn(name = "customer_id")
-    private Customer customer;
 
     @Enumerated(EnumType.STRING)
     private PayForm payForm;
@@ -74,19 +65,20 @@ public class AirlineMovement {
     private String personalId;
 
     @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    @ManyToOne
+    @JoinColumn(name = "carrier_code_id")
+    private CarrierCode carrierCode;
+
+    @ManyToOne
+    @JoinColumn(name = "customer_id")
+    private Customer customer;
+
+    @ManyToOne
     @JoinColumn(name = "sales_person_id")
     private SalesPerson salesPerson;
 
-    public enum GDS {
-        Amadeus, Saber, Galileo, WorldSpan, Other
-    }
-
-    public enum TicketForm {
-        BSP, VCH, STK
-    }
-
-    public enum PayForm {
-        Cash, Credit
-    }
 }
 
