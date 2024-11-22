@@ -29,7 +29,9 @@ public class AirlineMovementController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteAirlineMovement(@PathVariable Long id) {
+    public ResponseEntity<String> deleteAirlineMovement(@PathVariable Long id) {
+
         airlineMovementService.deleteAirlineMovement(id);
+        return ResponseEntity.ok("Deleted Successfully");
     }
 }

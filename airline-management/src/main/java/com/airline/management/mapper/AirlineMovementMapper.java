@@ -22,9 +22,9 @@ public class AirlineMovementMapper {
     public AirlineMovement toEntity(AirlineMovementRequestDTO dto) {
         AirlineMovement airlineMovement = new AirlineMovement();
         airlineMovement.setSerialNumber(dto.getSerialNumber());
-        airlineMovement.setGds(dto.getGds() != null ? GDS.valueOf(dto.getGds().toUpperCase()) : null);
-        airlineMovement.setTicketForm(dto.getTicketForm() != null ? TicketForm.valueOf(dto.getTicketForm().toUpperCase()) : null);
-        airlineMovement.setPayForm(dto.getPayForm() != null ? PayForm.valueOf(dto.getPayForm().toUpperCase()) : null);
+        airlineMovement.setGds(dto.getGds() != null ? GDS.valueOf(dto.getGds()) : null);
+        airlineMovement.setTicketForm(dto.getTicketForm() != null ? TicketForm.valueOf(dto.getTicketForm()) : null);
+        airlineMovement.setPayForm(dto.getPayForm() != null ? PayForm.valueOf(dto.getPayForm()) : null);
         airlineMovement.setRoute(dto.getRoute());
         airlineMovement.setRemarks(dto.getRemarks());
         airlineMovement.setIssueDate(DateUtils.toDate(dto.getIssueDate()));
@@ -73,12 +73,12 @@ public class AirlineMovementMapper {
     }
 
     public void updateEntityFromDTO(AirlineMovementRequestDTO dto, AirlineMovement entity) {
-        entity.setGds(dto.getGds() != null ? GDS.valueOf(dto.getGds().toUpperCase()) : entity.getGds());
+        entity.setGds(dto.getGds() != null ? GDS.valueOf(dto.getGds()) : entity.getGds());
         entity.setIssueDate(dto.getIssueDate() != null ? DateUtils.toDate(dto.getIssueDate()) : entity.getIssueDate());
         entity.setTravelDate(dto.getTravelDate() != null ? DateUtils.toDate(dto.getTravelDate()) : entity.getTravelDate());
         entity.setReturnDate(dto.getReturnDate() != null ? DateUtils.toDate(dto.getReturnDate()) : entity.getReturnDate());
-        entity.setTicketForm(dto.getTicketForm() != null ? TicketForm.valueOf(dto.getTicketForm().toUpperCase()) : entity.getTicketForm());
-        entity.setPayForm(dto.getPayForm() != null ? PayForm.valueOf(dto.getPayForm().toUpperCase()) : entity.getPayForm());
+        entity.setTicketForm(dto.getTicketForm() != null ? TicketForm.valueOf(dto.getTicketForm()) : entity.getTicketForm());
+        entity.setPayForm(dto.getPayForm() != null ? PayForm.valueOf(dto.getPayForm()) : entity.getPayForm());
         entity.setPassengerName(dto.getPassengerName() != null ? dto.getPassengerName() : entity.getPassengerName());
         entity.setRoute(dto.getRoute() != null ? dto.getRoute() : entity.getRoute());
         entity.setRemarks(dto.getRemarks() != null ? dto.getRemarks() : entity.getRemarks());
@@ -87,6 +87,7 @@ public class AirlineMovementMapper {
         entity.setSavingReason(dto.getSavingReason() != null ? dto.getSavingReason() : entity.getSavingReason());
         entity.setCreditCardNo(dto.getCreditCardNo() != null ? dto.getCreditCardNo() : entity.getCreditCardNo());
         entity.setPersonalId(dto.getPersonalId() != null ? dto.getPersonalId() : entity.getPersonalId());
+        entity.setSerialNumber(dto.getSerialNumber() != null ? dto.getSerialNumber() : entity.getSerialNumber());
 
         entity.setCustomer(dto.getCustomerCode() != null ? customerRepository.findByCustomerCode(dto.getCustomerCode()).orElse(entity.getCustomer()) : entity.getCustomer());
         entity.setCarrierCode(dto.getCarrierCode() != null ? carrierCodeRepository.findByCode(dto.getCarrierCode()).orElse(entity.getCarrierCode()) : entity.getCarrierCode());

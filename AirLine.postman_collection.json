@@ -1,0 +1,90 @@
+{
+	"info": {
+		"_postman_id": "4af38ba5-e6eb-4f92-85a1-d0d9b96f451d",
+		"name": "AirLine",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13492415"
+	},
+	"item": [
+		{
+			"name": "Add AirLine Movement",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"serialNumber\": 1234,\r\n    \"gds\": \"Amadeus\",\r\n    \"issueDate\": \"2024-11-22\",\r\n    \"ticketForm\": \"BSP\",\r\n    \"passengerName\": \"John Doe\",\r\n    \"payForm\": \"Cash\",\r\n    \"route\": \"NYC-LON\",\r\n    \"remarks\": \"Urgent\",\r\n    \"destination\": \"London\",\r\n    \"savingAmount\": 200.50,\r\n    \"savingReason\": \"Special Offer\",\r\n    \"travelDate\": \"2024-12-15\",\r\n    \"returnDate\": \"2025-01-15\",\r\n    \"creditCardNo\": \"4111111111111111\",\r\n    \"personalId\": \"123456789\",\r\n    \"userName\": \"youssef\",\r\n    \"carrierCode\": \"AA\",\r\n    \"customerCode\": \"CUST123\",\r\n    \"salesPersonCode\": \"SP001\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/airline-movements",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"airline-movements"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add AirLine Movement Copy",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/airline-movements/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"airline-movements",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update AirLine Movement",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"serialNumber\": 56545,\r\n    \"gds\": \"Amadeus\",\r\n    \"issueDate\": \"2024-11-22\",\r\n    \"ticketForm\": \"BSP\",\r\n    \"passengerName\": \"John Doe\",\r\n    \"payForm\": \"Cash\",\r\n    \"route\": \"NYC-LON\",\r\n    \"remarks\": \"Urgent\",\r\n    \"destination\": \"London\",\r\n    \"savingAmount\": 200.50,\r\n    \"savingReason\": \"Special Offer\",\r\n    \"travelDate\": \"2024-12-15\",\r\n    \"returnDate\": \"2025-01-15\",\r\n    \"creditCardNo\": \"4111111111111111\",\r\n    \"personalId\": \"123456789\",\r\n    \"userName\": \"youssef\",\r\n    \"carrierCode\": \"AA\",\r\n    \"customerCode\": \"CUST123\",\r\n    \"salesPersonCode\": \"SP001\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/airline-movements/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"airline-movements",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
