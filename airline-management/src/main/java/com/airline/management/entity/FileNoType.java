@@ -1,25 +1,23 @@
 package com.airline.management.entity;
 
-
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-@Table(name="Customer")
+@Table(name="File_No_Type")
 @Entity
 @Getter
 @Setter
 @ToString
-public class Customer {
+public class FileNoType {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "customer_name_en")
-    private String customerNameEn;
+    @Column(nullable = false, unique = true)
+    private String code;
 
-    @Column(name = "customer_name_ar")
-    private String customerNameAr;
+    @Column(nullable = false)
+    private String name;
 }
-

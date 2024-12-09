@@ -13,6 +13,7 @@ import java.time.LocalDate;
 @Setter
 @ToString
 public class AirlineMovementRequestDTO {
+    private Integer ticketNum;
     private Integer serialNumber;
     private String gds; // Amadeus, Saber, etc.
     private LocalDate issueDate;
@@ -28,8 +29,14 @@ public class AirlineMovementRequestDTO {
     private LocalDate returnDate;
     private String creditCardNo;
     private String personalId;
+    private String iata;
+    private String invoiceNum;
+    private String airLineTicketType;
+    private String airLineTicketSettlement;
     private String userName; // Reference to User
-    private String carrierCode; // Reference to CarrierCode
-    private String customerCode; // Reference to Customer
-    private String salesPersonCode; // Reference to SalesPerson
+    private Long carrierCodeId; // Reference to CarrierCode
+    private Long customerId; // Reference to Customer
+    private Long salesPersonId; // Reference to SalesPerson
+    private Long employeeId; // Reference to Employee
+    private Long fileNumTypeId; // Reference to fileNoType
 }

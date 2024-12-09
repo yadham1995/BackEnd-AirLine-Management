@@ -1,9 +1,7 @@
 package com.airline.management.entity;
 
 
-import com.airline.management.dto.GDS;
-import com.airline.management.dto.PayForm;
-import com.airline.management.dto.TicketForm;
+import com.airline.management.dto.*;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -21,6 +19,9 @@ public class AirlineMovement {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(name = "ticket_Num", nullable = false, unique = true)
+    private Integer ticketNum;
 
     @Column(name = "serial_number", nullable = false, unique = true)
     private Integer serialNumber;
@@ -79,6 +80,26 @@ public class AirlineMovement {
     @ManyToOne
     @JoinColumn(name = "sales_person_id")
     private SalesPerson salesPerson;
+
+    @Column(name = "iata")
+    private String iata;
+
+    @Enumerated(EnumType.STRING)
+    private AirLineTicketType airLineTicketType;
+
+    @Column(name = "invoice_num")
+    private String invoiceNum;
+
+    @Enumerated(EnumType.STRING)
+    private AirLineTicketSettlement airLineTicketSettlement;
+
+    @ManyToOne
+    @JoinColumn(name = "employee_id")
+    private Employee employee;
+
+    @ManyToOne
+    @JoinColumn(name = "file_type_id")
+    private FileNoType fileNoType;
 
 }
 

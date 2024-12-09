@@ -1,7 +1,7 @@
 package com.airline.management.mapper;
 
 import com.airline.management.dto.*;
-import com.airline.management.entity.AirlineMovement;
+import com.airline.management.entity.*;
 import com.airline.management.repository.CarrierCodeRepository;
 import com.airline.management.repository.CustomerRepository;
 import com.airline.management.repository.SalesPersonRepository;
@@ -37,11 +37,44 @@ public class AirlineMovementMapper {
         airlineMovement.setCreditCardNo(dto.getCreditCardNo());
         airlineMovement.setPersonalId(dto.getPersonalId());
 
+        airlineMovement.setIata(dto.getIata());
+        airlineMovement.setTicketNum(dto.getTicketNum());
+        airlineMovement.setInvoiceNum(dto.getInvoiceNum());
+        airlineMovement.setAirLineTicketType(dto.getAirLineTicketType() != null ? AirLineTicketType.valueOf(dto.getAirLineTicketType()) : null);
+        airlineMovement.setAirLineTicketSettlement(dto.getAirLineTicketSettlement() != null ? AirLineTicketSettlement.valueOf(dto.getAirLineTicketSettlement()) : null);
+
         // Fetch and set relationships
         airlineMovement.setUser(dto.getUserName() != null ? userRepository.findByUserName(dto.getUserName()).orElse(null) : null);
-        airlineMovement.setCarrierCode(dto.getCarrierCode() != null ? carrierCodeRepository.findByCode(dto.getCarrierCode()).orElse(null) : null);
-        airlineMovement.setCustomer(dto.getCustomerCode() != null ? customerRepository.findByCustomerCode(dto.getCustomerCode()).orElse(null) : null);
-        airlineMovement.setSalesPerson(dto.getSalesPersonCode() != null ? salesPersonRepository.findBySalesPersonCode(dto.getSalesPersonCode()).orElse(null) : null);
+
+        if(dto.getCarrierCodeId()!=null){
+            CarrierCode carrierCode = new CarrierCode();
+            carrierCode.setId(dto.getCarrierCodeId());
+            airlineMovement.setCarrierCode(carrierCode);
+        }
+
+        if(dto.getCustomerId()!=null){
+            Customer customer = new Customer();
+            customer.setId(dto.getCustomerId());
+            airlineMovement.setCustomer(customer);
+        }
+
+        if(dto.getSalesPersonId()!=null){
+            SalesPerson salesPerson = new SalesPerson();
+            salesPerson.setId(dto.getSalesPersonId());
+            airlineMovement.setSalesPerson(salesPerson);
+        }
+
+        if(dto.getEmployeeId()!=null){
+            Employee employee = new Employee();
+            employee.setId(dto.getEmployeeId());
+            airlineMovement.setEmployee(employee);
+        }
+
+        if(dto.getFileNumTypeId()!=null){
+            FileNoType fileNoType = new FileNoType();
+            fileNoType.setId(dto.getFileNumTypeId());
+            airlineMovement.setFileNoType(fileNoType);
+        }
 
         return airlineMovement;
     }
@@ -64,11 +97,19 @@ public class AirlineMovementMapper {
         dto.setReturnDate(DateUtils.toLocalDate(entity.getReturnDate())); // Convert Date to LocalDate
         dto.setCreditCardNo(entity.getCreditCardNo());
         dto.setPersonalId(entity.getPersonalId());
+        dto.setIata(entity.getIata());
+        dto.setTicketNum(entity.getTicketNum());
+        dto.setInvoiceNum(entity.getInvoiceNum());
+        dto.setAirLineTicketType(entity.getAirLineTicketType() != null ? entity.getAirLineTicketType().name() : null);
+        dto.setAirLineTicketSettlement(entity.getAirLineTicketSettlement() != null ? entity.getAirLineTicketSettlement().name() : null);
 
-        dto.setCustomerName(entity.getCustomer() != null ? entity.getCustomer().getName() : null);
-        dto.setCarrierCodeName(entity.getCarrierCode() != null ? entity.getCarrierCode().getName() : null);
-        dto.setSalesPersonName(entity.getSalesPerson() != null ? entity.getSalesPerson().getName() : null);
+        dto.setCustomerId(entity.getCustomer() != null ? entity.getCustomer().getId() : null);
+        dto.setCarrierCodeId(entity.getCarrierCode() != null ? entity.getCarrierCode().getId() : null);
+        dto.setSalesPersonId(entity.getSalesPerson() != null ? entity.getSalesPerson().getId() : null);
         dto.setUserName(entity.getUser() != null ? entity.getUser().getUserName() : null);
+        dto.setEmployeeId(entity.getEmployee() != null ? entity.getEmployee().getId() : null);
+        dto.setFileNumTypeId(entity.getFileNoType() != null ? entity.getFileNoType().getId() : null);
+
         return dto;
     }
 
@@ -89,9 +130,42 @@ public class AirlineMovementMapper {
         entity.setPersonalId(dto.getPersonalId() != null ? dto.getPersonalId() : entity.getPersonalId());
         entity.setSerialNumber(dto.getSerialNumber() != null ? dto.getSerialNumber() : entity.getSerialNumber());
 
-        entity.setCustomer(dto.getCustomerCode() != null ? customerRepository.findByCustomerCode(dto.getCustomerCode()).orElse(entity.getCustomer()) : entity.getCustomer());
-        entity.setCarrierCode(dto.getCarrierCode() != null ? carrierCodeRepository.findByCode(dto.getCarrierCode()).orElse(entity.getCarrierCode()) : entity.getCarrierCode());
-        entity.setSalesPerson(dto.getSalesPersonCode() != null ? salesPersonRepository.findBySalesPersonCode(dto.getSalesPersonCode()).orElse(entity.getSalesPerson()) : entity.getSalesPerson());
+        entity.setIata(dto.getIata() != null ? dto.getIata() : entity.getIata());
+        entity.setTicketNum(dto.getTicketNum() != null ? dto.getTicketNum() : entity.getTicketNum());
+        entity.setInvoiceNum(dto.getInvoiceNum() != null ? dto.getInvoiceNum() : entity.getInvoiceNum());
+        entity.setAirLineTicketType(dto.getAirLineTicketType() != null ? AirLineTicketType.valueOf(dto.getAirLineTicketType()) : entity.getAirLineTicketType());
+        entity.setAirLineTicketSettlement(dto.getAirLineTicketSettlement() != null ? AirLineTicketSettlement.valueOf(dto.getAirLineTicketSettlement()) : entity.getAirLineTicketSettlement());
+
+        if(dto.getCarrierCodeId()!=null){
+            CarrierCode carrierCode = new CarrierCode();
+            carrierCode.setId(dto.getCarrierCodeId());
+            entity.setCarrierCode(carrierCode);
+        }
+
+        if(dto.getCustomerId()!=null){
+            Customer customer = new Customer();
+            customer.setId(dto.getCustomerId());
+            entity.setCustomer(customer);
+        }
+
+        if(dto.getSalesPersonId()!=null){
+            SalesPerson salesPerson = new SalesPerson();
+            salesPerson.setId(dto.getSalesPersonId());
+            entity.setSalesPerson(salesPerson);
+        }
+
+        if(dto.getEmployeeId()!=null){
+            Employee employee = new Employee();
+            employee.setId(dto.getEmployeeId());
+            entity.setEmployee(employee);
+        }
+
+        if(dto.getFileNumTypeId()!=null){
+            FileNoType fileNoType = new FileNoType();
+            fileNoType.setId(dto.getFileNumTypeId());
+            entity.setFileNoType(fileNoType);
+        }
+
         entity.setUser(dto.getUserName() != null ? userRepository.findByUserName(dto.getUserName()).orElse(entity.getUser()) : entity.getUser());
     }
 }

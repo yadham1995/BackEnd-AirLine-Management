@@ -12,13 +12,12 @@ import java.time.LocalDate;
 @ToString
 public class AirlineMovementResponseDTO {
     private Long id; // Unique identifier for the airline movement
+    private Integer ticketNum;
     private Integer serialNumber;
     private String gds;
     private LocalDate issueDate;
-    private String carrierCodeName; // Human-readable name for CarrierCode
     private String ticketForm;
     private String passengerName;
-    private String customerName; // Human-readable name for Customer
     private String payForm;
     private String route;
     private String remarks;
@@ -29,6 +28,14 @@ public class AirlineMovementResponseDTO {
     private LocalDate returnDate;
     private String creditCardNo; // (Masked for security if needed)
     private String personalId;
-    private String salesPersonName; // Human-readable name for SalesPerson
+    private String iata;
+    private String invoiceNum;
+    private String airLineTicketType;
+    private String airLineTicketSettlement;
+    private Long carrierCodeId; // Reference to CarrierCode
+    private Long customerId; // Reference to Customer
+    private Long salesPersonId; // Reference to SalesPerson
+    private Long employeeId; // Reference to Employee
+    private Long fileNumTypeId; // Reference to fileNoType
     private String userName;
 }
