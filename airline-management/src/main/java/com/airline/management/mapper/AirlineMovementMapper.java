@@ -52,10 +52,16 @@ public class AirlineMovementMapper {
             airlineMovement.setCarrierCode(carrierCode);
         }
 
-        if(dto.getCustomerId()!=null){
-            Customer customer = new Customer();
-            customer.setId(dto.getCustomerId());
-            airlineMovement.setCustomer(customer);
+        if (dto.getParentCustomerId() != null) {
+            Customer parentCustomer = new Customer();
+            parentCustomer.setId(dto.getParentCustomerId());
+            airlineMovement.setParentCustomer(parentCustomer);
+        }
+
+        if (dto.getSubCustomerId() != null) {
+            Customer subCustomer = new Customer();
+            subCustomer.setId(dto.getSubCustomerId());
+            airlineMovement.setSubCustomer(subCustomer);
         }
 
         if(dto.getSalesPersonId()!=null){
@@ -103,7 +109,8 @@ public class AirlineMovementMapper {
         dto.setAirLineTicketType(entity.getAirLineTicketType() != null ? entity.getAirLineTicketType().name() : null);
         dto.setAirLineTicketSettlement(entity.getAirLineTicketSettlement() != null ? entity.getAirLineTicketSettlement().name() : null);
 
-        dto.setCustomerId(entity.getCustomer() != null ? entity.getCustomer().getId() : null);
+        dto.setParentCustomerId(entity.getParentCustomer() != null ? entity.getParentCustomer().getId() : null);
+        dto.setSubCustomerId(entity.getSubCustomer() != null ? entity.getSubCustomer().getId() : null);
         dto.setCarrierCodeId(entity.getCarrierCode() != null ? entity.getCarrierCode().getId() : null);
         dto.setSalesPersonId(entity.getSalesPerson() != null ? entity.getSalesPerson().getId() : null);
         dto.setUserName(entity.getUser() != null ? entity.getUser().getUserName() : null);
@@ -142,10 +149,16 @@ public class AirlineMovementMapper {
             entity.setCarrierCode(carrierCode);
         }
 
-        if(dto.getCustomerId()!=null){
-            Customer customer = new Customer();
-            customer.setId(dto.getCustomerId());
-            entity.setCustomer(customer);
+        if (dto.getParentCustomerId() != null) {
+            Customer parentCustomer = new Customer();
+            parentCustomer.setId(dto.getParentCustomerId());
+            entity.setParentCustomer(parentCustomer);
+        }
+
+        if (dto.getSubCustomerId() != null) {
+            Customer subCustomer = new Customer();
+            subCustomer.setId(dto.getSubCustomerId());
+            entity.setSubCustomer(subCustomer);
         }
 
         if(dto.getSalesPersonId()!=null){

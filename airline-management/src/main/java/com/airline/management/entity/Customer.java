@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.util.List;
+
 @Table(name="Customer")
 @Entity
 @Getter
@@ -21,5 +23,12 @@ public class Customer {
 
     @Column(name = "customer_name_ar")
     private String customerNameAr;
+
+    @ManyToOne
+    @JoinColumn(name = "parent_id")
+    private Customer parentCustomer;
+
+    @OneToMany(mappedBy = "parentCustomer", cascade = CascadeType.ALL)
+    private List<Customer> subCustomers;
 }
 

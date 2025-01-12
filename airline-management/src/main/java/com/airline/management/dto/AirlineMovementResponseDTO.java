@@ -33,7 +33,8 @@ public class AirlineMovementResponseDTO {
     private String airLineTicketType;
     private String airLineTicketSettlement;
     private Long carrierCodeId; // Reference to CarrierCode
-    private Long customerId; // Reference to Customer
+    private Long parentCustomerId; // Reference to the parent customer
+    private Long subCustomerId;    // Reference to the sub-customer
     private Long salesPersonId; // Reference to SalesPerson
     private Long employeeId; // Reference to Employee
     private Long fileNumTypeId; // Reference to fileNoType
