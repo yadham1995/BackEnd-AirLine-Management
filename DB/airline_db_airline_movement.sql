@@ -45,46 +45,28 @@ CREATE TABLE `airline_movement` (
   `ticket_num` int NOT NULL,
   `travel_date` datetime(6) DEFAULT NULL,
   `carrier_code_id` bigint DEFAULT NULL,
-  `customer_id` bigint DEFAULT NULL,
   `employee_id` bigint DEFAULT NULL,
   `file_type_id` bigint DEFAULT NULL,
+  `parent_customer_id` bigint DEFAULT NULL,
   `sales_person_id` bigint DEFAULT NULL,
+  `sub_customer_id` bigint DEFAULT NULL,
   `user_id` bigint DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UKcv49qkjmjxtjbaa4dwf64x3v3` (`serial_number`),
   UNIQUE KEY `UKqbyreyyabcrj8raidubyxgny6` (`ticket_num`),
   KEY `FKmuskn18t5rlnloqo112vvr7s7` (`carrier_code_id`),
-  KEY `FKonf0nsms6b7tpsmciiuj1kyvl` (`customer_id`),
   KEY `FKff2ju9iv3h4l3818sobyn4vww` (`employee_id`),
   KEY `FKplj3a6ah9drq8838bypd4d7ck` (`file_type_id`),
+  KEY `FKlaq74gm22evmmtne7a9h3fqm2` (`parent_customer_id`),
   KEY `FK79cwji443vqw4e2k20h7ok67q` (`sales_person_id`),
+  KEY `FKgfoghbgg0edl3n687qcoufqfd` (`sub_customer_id`),
   KEY `FK1jnbr2mhguw11i25o494fw2en` (`user_id`),
   CONSTRAINT `FK1jnbr2mhguw11i25o494fw2en` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`),
   CONSTRAINT `FK79cwji443vqw4e2k20h7ok67q` FOREIGN KEY (`sales_person_id`) REFERENCES `sales_person` (`id`),
   CONSTRAINT `FKff2ju9iv3h4l3818sobyn4vww` FOREIGN KEY (`employee_id`) REFERENCES `employee` (`id`),
+  CONSTRAINT `FKgfoghbgg0edl3n687qcoufqfd` FOREIGN KEY (`sub_customer_id`) REFERENCES `customer` (`id`),
+  CONSTRAINT `FKlaq74gm22evmmtne7a9h3fqm2` FOREIGN KEY (`parent_customer_id`) REFERENCES `customer` (`id`),
   CONSTRAINT `FKmuskn18t5rlnloqo112vvr7s7` FOREIGN KEY (`carrier_code_id`) REFERENCES `carrier_code` (`id`),
-  CONSTRAINT `FKonf0nsms6b7tpsmciiuj1kyvl` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`id`),
   CONSTRAINT `FKplj3a6ah9drq8838bypd4d7ck` FOREIGN KEY (`file_type_id`) REFERENCES `file_no_type` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
---
--- Dumping data for table `airline_movement`
---
-
-LOCK TABLES `airline_movement` WRITE;
-/*!40000 ALTER TABLE `airline_movement` DISABLE KEYS */;
-INSERT INTO `airline_movement` VALUES (1,'Cash','ISSUE','4111111111111111','London','Amadeus','1234','INV20241206','2024-11-22 00:00:00.000000','John Doe','Cash','123456789','Urgent','2025-01-15 00:00:00.000000','NYC-LON',200.50,'Special Offer',1234,'BSP',123456,'2024-12-15 00:00:00.000000',1,1,1,1,1,1);
-/*!40000 ALTER TABLE `airline_movement` ENABLE KEYS */;
-UNLOCK TABLES;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
-
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
-
--- Dump completed on 2024-12-09 14:02:51
