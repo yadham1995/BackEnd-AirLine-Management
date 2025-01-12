@@ -16,7 +16,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\t\"ticketNum\": 123456,\r\n    \"serialNumber\": 1234,\r\n    \"gds\": \"Amadeus\",\r\n    \"issueDate\": \"2024-11-22\",\r\n    \"ticketForm\": \"BSP\",\r\n    \"passengerName\": \"John Doe\",\r\n    \"payForm\": \"Cash\",\r\n    \"route\": \"NYC-LON\",\r\n    \"remarks\": \"Urgent\",\r\n    \"destination\": \"London\",\r\n    \"savingAmount\": 200.50,\r\n    \"savingReason\": \"Special Offer\",\r\n    \"travelDate\": \"2024-12-15\",\r\n    \"returnDate\": \"2025-01-15\",\r\n    \"creditCardNo\": \"4111111111111111\",\r\n    \"personalId\": \"123456789\",\r\n\t\"iata\": \"1234\",\r\n\t\"invoiceNum\": \"INV20241206\",\r\n\t\"airLineTicketType\": \"Economy\",\r\n\t\"airLineTicketSettlement\": \"Cleared\",\r\n    \"userName\": \"youssef\",\r\n    \"carrierCodeId\": 1,\r\n\t\"customerId\": 2,\r\n\t\"salesPersonId\": 3,\r\n\t\"employeeId\": 4,\r\n\t\"fileNumTypeId\": 5\r\n}",
+							"raw": "{\r\n\t\"ticketNum\": 123456,\r\n    \"serialNumber\": 1234,\r\n    \"gds\": \"Amadeus\",\r\n    \"issueDate\": \"2024-11-22\",\r\n    \"ticketForm\": \"BSP\",\r\n    \"passengerName\": \"John Doe\",\r\n    \"payForm\": \"Cash\",\r\n    \"route\": \"NYC-LON\",\r\n    \"remarks\": \"Urgent\",\r\n    \"destination\": \"London\",\r\n    \"savingAmount\": 200.50,\r\n    \"savingReason\": \"Special Offer\",\r\n    \"travelDate\": \"2024-12-15\",\r\n    \"returnDate\": \"2025-01-15\",\r\n    \"creditCardNo\": \"4111111111111111\",\r\n    \"personalId\": \"123456789\",\r\n\t\"iata\": \"1234\",\r\n\t\"invoiceNum\": \"INV20241206\",\r\n\t\"airLineTicketType\": \"Economy\",\r\n\t\"airLineTicketSettlement\": \"Cleared\",\r\n    \"userName\": \"youssef\",\r\n    \"carrierCodeId\": 1,\r\n\t\"parentCustomerId\": 2,\r\n    \"subCustomerId\": 2,\r\n\t\"salesPersonId\": 3,\r\n\t\"employeeId\": 4,\r\n\t\"fileNumTypeId\": 5\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -66,7 +66,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"ticketNum\": 123456,\r\n    \"serialNumber\": 56545,\r\n    \"gds\": \"Amadeus\",\r\n    \"issueDate\": \"2024-11-22\",\r\n    \"ticketForm\": \"BSP\",\r\n    \"passengerName\": \"John Doe\",\r\n    \"payForm\": \"Cash\",\r\n    \"route\": \"NYC-LON\",\r\n    \"remarks\": \"Urgent\",\r\n    \"destination\": \"London\",\r\n    \"savingAmount\": 200.50,\r\n    \"savingReason\": \"Special Offer\",\r\n    \"travelDate\": \"2024-12-15\",\r\n    \"returnDate\": \"2025-01-15\",\r\n    \"creditCardNo\": \"4111111111111111\",\r\n    \"personalId\": \"123456789\",\r\n    \"iata\": \"1234\",\r\n    \"invoiceNum\": \"INV20241206\",\r\n    \"airLineTicketType\": \"Economy\",\r\n    \"airLineTicketSettlement\": \"Cleared\",\r\n    \"userName\": \"youssef\",\r\n    \"carrierCodeId\": 1,\r\n    \"customerId\": 2,\r\n    \"salesPersonId\": 3,\r\n    \"employeeId\": 4,\r\n    \"fileNumTypeId\": 5\r\n}",
+							"raw": "{\r\n    \"ticketNum\": 123456,\r\n    \"serialNumber\": 56545,\r\n    \"gds\": \"Amadeus\",\r\n    \"issueDate\": \"2024-11-22\",\r\n    \"ticketForm\": \"BSP\",\r\n    \"passengerName\": \"John Doe\",\r\n    \"payForm\": \"Cash\",\r\n    \"route\": \"NYC-LON\",\r\n    \"remarks\": \"Urgent\",\r\n    \"destination\": \"London\",\r\n    \"savingAmount\": 200.50,\r\n    \"savingReason\": \"Special Offer\",\r\n    \"travelDate\": \"2024-12-15\",\r\n    \"returnDate\": \"2025-01-15\",\r\n    \"creditCardNo\": \"4111111111111111\",\r\n    \"personalId\": \"123456789\",\r\n    \"iata\": \"1234\",\r\n    \"invoiceNum\": \"INV20241206\",\r\n    \"airLineTicketType\": \"Economy\",\r\n    \"airLineTicketSettlement\": \"Cleared\",\r\n    \"userName\": \"youssef\",\r\n    \"carrierCodeId\": 1,\r\n    \"parentCustomerId\": 2,\r\n    \"subCustomerId\": 2,\r\n    \"salesPersonId\": 3,\r\n    \"employeeId\": 4,\r\n    \"fileNumTypeId\": 5\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -579,6 +579,174 @@
 							"path": [
 								"api",
 								"file-no-types"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Customer",
+			"item": [
+				{
+					"name": "Create parent Customer",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"customerNameEn\": \"Parent Customer EN\",\r\n  \"customerNameAr\": \"Parent Customer AR\",\r\n  \"parentCustomerId\": null\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/customers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"customers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Child Customer",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/customers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"customers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getCustomer by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/customers/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"customers",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete customer",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/customers/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"customers",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Customers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/customers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"customers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Parent Customers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/customers/parents",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"customers",
+								"parents"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Sub-Customers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/customers/subs/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"customers",
+								"subs",
+								"1"
 							]
 						}
 					},
