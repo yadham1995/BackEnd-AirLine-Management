@@ -73,15 +73,15 @@ public class AirlineMovement {
     @JoinColumn(name = "carrier_code_id")
     private CarrierCode carrierCode;
 
-    // Reference to the parent customer
+    // Reference to the main account
     @ManyToOne
-    @JoinColumn(name = "parent_customer_id")
-    private Customer parentCustomer;
+    @JoinColumn(name = "main_account_id")
+    private Account mainAccount;
 
-    // Reference to the sub-customer (nullable if not applicable)
+    // Reference to the subAccount
     @ManyToOne
-    @JoinColumn(name = "sub_customer_id")
-    private Customer subCustomer;
+    @JoinColumn(name = "sub_account_id")
+    private Account subAccount;
 
     @ManyToOne
     @JoinColumn(name = "sales_person_id")

@@ -1,6 +1,5 @@
 package com.airline.management.dto;
 
-import jakarta.persistence.Entity;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -35,8 +34,8 @@ public class AirlineMovementRequestDTO {
     private String airLineTicketSettlement;
     private String userName; // Reference to User
     private Long carrierCodeId; // Reference to CarrierCode
-    private Long parentCustomerId; // Reference to the parent customer
-    private Long subCustomerId;    // Reference to the sub-customer
+    private Long mainAccountId; // Reference to the main account
+    private Long subAccountId;    // Reference to the sub-account
     private Long salesPersonId; // Reference to SalesPerson
     private Long employeeId; // Reference to Employee
     private Long fileNumTypeId; // Reference to fileNoType

@@ -2,9 +2,6 @@ package com.airline.management.mapper;
 
 import com.airline.management.dto.*;
 import com.airline.management.entity.*;
-import com.airline.management.repository.CarrierCodeRepository;
-import com.airline.management.repository.CustomerRepository;
-import com.airline.management.repository.SalesPersonRepository;
 import com.airline.management.repository.UserRepository;
 import com.airline.management.utils.DateUtils;
 import lombok.AllArgsConstructor;
@@ -15,9 +12,6 @@ import org.springframework.stereotype.Component;
 public class AirlineMovementMapper {
 
     private final UserRepository userRepository;
-    private final CarrierCodeRepository carrierCodeRepository;
-    private final CustomerRepository customerRepository;
-    private final SalesPersonRepository salesPersonRepository;
 
     public AirlineMovement toEntity(AirlineMovementRequestDTO dto) {
         AirlineMovement airlineMovement = new AirlineMovement();
@@ -52,16 +46,16 @@ public class AirlineMovementMapper {
             airlineMovement.setCarrierCode(carrierCode);
         }
 
-        if (dto.getParentCustomerId() != null) {
-            Customer parentCustomer = new Customer();
-            parentCustomer.setId(dto.getParentCustomerId());
-            airlineMovement.setParentCustomer(parentCustomer);
+        if (dto.getMainAccountId() != null) {
+            Account mainAccount = new Account();
+            mainAccount.setId(dto.getMainAccountId());
+            airlineMovement.setMainAccount(mainAccount);
         }
 
-        if (dto.getSubCustomerId() != null) {
-            Customer subCustomer = new Customer();
-            subCustomer.setId(dto.getSubCustomerId());
-            airlineMovement.setSubCustomer(subCustomer);
+        if (dto.getSubAccountId() != null) {
+            Account subAccount = new Account();
+            subAccount.setId(dto.getSubAccountId());
+            airlineMovement.setSubAccount(subAccount);
         }
 
         if(dto.getSalesPersonId()!=null){
@@ -109,8 +103,8 @@ public class AirlineMovementMapper {
         dto.setAirLineTicketType(entity.getAirLineTicketType() != null ? entity.getAirLineTicketType().name() : null);
         dto.setAirLineTicketSettlement(entity.getAirLineTicketSettlement() != null ? entity.getAirLineTicketSettlement().name() : null);
 
-        dto.setParentCustomerId(entity.getParentCustomer() != null ? entity.getParentCustomer().getId() : null);
-        dto.setSubCustomerId(entity.getSubCustomer() != null ? entity.getSubCustomer().getId() : null);
+        dto.setParentCustomerId(entity.getMainAccount() != null ? entity.getMainAccount().getId() : null);
+        dto.setSubCustomerId(entity.getSubAccount() != null ? entity.getSubAccount().getId() : null);
         dto.setCarrierCodeId(entity.getCarrierCode() != null ? entity.getCarrierCode().getId() : null);
         dto.setSalesPersonId(entity.getSalesPerson() != null ? entity.getSalesPerson().getId() : null);
         dto.setUserName(entity.getUser() != null ? entity.getUser().getUserName() : null);
@@ -149,16 +143,16 @@ public class AirlineMovementMapper {
             entity.setCarrierCode(carrierCode);
         }
 
-        if (dto.getParentCustomerId() != null) {
-            Customer parentCustomer = new Customer();
-            parentCustomer.setId(dto.getParentCustomerId());
-            entity.setParentCustomer(parentCustomer);
+        if (dto.getMainAccountId() != null) {
+            Account mainAccount = new Account();
+            mainAccount.setId(dto.getMainAccountId());
+            entity.setMainAccount(mainAccount);
         }
 
-        if (dto.getSubCustomerId() != null) {
-            Customer subCustomer = new Customer();
-            subCustomer.setId(dto.getSubCustomerId());
-            entity.setSubCustomer(subCustomer);
+        if (dto.getSubAccountId() != null) {
+            Account subAccount = new Account();
+            subAccount.setId(dto.getSubAccountId());
+            entity.setSubAccount(subAccount);
         }
 
         if(dto.getSalesPersonId()!=null){
