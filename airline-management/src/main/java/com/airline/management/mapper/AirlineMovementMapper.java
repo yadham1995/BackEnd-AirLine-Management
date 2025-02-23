@@ -41,21 +41,21 @@ public class AirlineMovementMapper {
         airlineMovement.setUser(dto.getUserName() != null ? userRepository.findByUserName(dto.getUserName()).orElse(null) : null);
 
         if(dto.getCarrierCodeId()!=null){
-            CarrierCode carrierCode = new CarrierCode();
+            Account carrierCode = new Account();
             carrierCode.setId(dto.getCarrierCodeId());
             airlineMovement.setCarrierCode(carrierCode);
         }
 
-        if (dto.getMainAccountId() != null) {
-            Account mainAccount = new Account();
-            mainAccount.setId(dto.getMainAccountId());
-            airlineMovement.setMainAccount(mainAccount);
+        if (dto.getParentCustomerId() != null) {
+            Account parentCustomer = new Account();
+            parentCustomer.setId(dto.getParentCustomerId());
+            airlineMovement.setMainAccount(parentCustomer);
         }
 
-        if (dto.getSubAccountId() != null) {
-            Account subAccount = new Account();
-            subAccount.setId(dto.getSubAccountId());
-            airlineMovement.setSubAccount(subAccount);
+        if (dto.getSubCustomerId() != null) {
+            Account subCustomer = new Account();
+            subCustomer.setId(dto.getSubCustomerId());
+            airlineMovement.setSubAccount(subCustomer);
         }
 
         if(dto.getSalesPersonId()!=null){
@@ -138,21 +138,21 @@ public class AirlineMovementMapper {
         entity.setAirLineTicketSettlement(dto.getAirLineTicketSettlement() != null ? AirLineTicketSettlement.valueOf(dto.getAirLineTicketSettlement()) : entity.getAirLineTicketSettlement());
 
         if(dto.getCarrierCodeId()!=null){
-            CarrierCode carrierCode = new CarrierCode();
+            Account carrierCode = new Account();
             carrierCode.setId(dto.getCarrierCodeId());
             entity.setCarrierCode(carrierCode);
         }
 
-        if (dto.getMainAccountId() != null) {
-            Account mainAccount = new Account();
-            mainAccount.setId(dto.getMainAccountId());
-            entity.setMainAccount(mainAccount);
+        if (dto.getParentCustomerId() != null) {
+            Account parentCustomer = new Account();
+            parentCustomer.setId(dto.getParentCustomerId());
+            entity.setMainAccount(parentCustomer);
         }
 
-        if (dto.getSubAccountId() != null) {
-            Account subAccount = new Account();
-            subAccount.setId(dto.getSubAccountId());
-            entity.setSubAccount(subAccount);
+        if (dto.getSubCustomerId() != null) {
+            Account subCustomer = new Account();
+            subCustomer.setId(dto.getSubCustomerId());
+            entity.setSubAccount(subCustomer);
         }
 
         if(dto.getSalesPersonId()!=null){

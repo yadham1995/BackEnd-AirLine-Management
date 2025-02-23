@@ -71,7 +71,7 @@ public class AirlineMovement {
 
     @ManyToOne
     @JoinColumn(name = "carrier_code_id")
-    private CarrierCode carrierCode;
+    private Account carrierCode;
 
     // Reference to the main account
     @ManyToOne
